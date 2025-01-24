@@ -14,9 +14,14 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
-    const nextSquares = squares.slice(); // 얕은복사사
-    nextSquares[i] = "X";
+    const nextSquares = squares.slice(); // 얕은복사
+    if (xIsNext) {
+      nextSquares[i] = 'X';
+    } else {
+      nextSquares[i] = 'O';
+    }
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
   return (
